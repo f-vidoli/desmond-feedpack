@@ -5,7 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -22,7 +22,7 @@ class WeatherWidgetRenderer(private val service: WeatherService) : WidgetRendere
     override fun Render(state: WidgetRenderState, onAction: (String, String) -> Unit, expanded: Boolean) {
         val s = service.currentState()
         Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp)).background(Color(DesmondPalette.AMBER)).border(1.5.dp, Color(DesmondPalette.INK), RoundedCornerShape(24.dp)).padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text(s?.title ?: "Weather Bologna", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Black, color = Color(DesmondPalette.INK))
+            Text(s?.title ?: "Weather", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Black, color = Color(DesmondPalette.INK))
             Text((s?.status ?: "Loading").uppercase(), style = MaterialTheme.typography.labelSmall, color = Color(DesmondPalette.INK), letterSpacing = 1.2.sp)
             HorizontalDivider(color = Color(DesmondPalette.INK), thickness = 1.5.dp)
             (s?.items ?: emptyList()).forEach { Text("• $it", color = Color(DesmondPalette.INK), style = MaterialTheme.typography.bodySmall) }

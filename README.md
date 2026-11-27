@@ -4,19 +4,34 @@ Feed plugins for [Desmond](https://github.com/f-vidoli/desmond).
 
 ## Included plugins
 
-- `nature.biotech/` - Nature Biotechnology RSS feed, OA/abstract/PDF enrichment, fullscreen builtin widget.
-- `weather.bologna/` - Bologna weather via Open-Meteo, builtin native widget + service.
-- `reuters.news/` - Reuters world headlines RSS, declarative WidgetState widget + builtin service.
+- `nature-biotech/` - Nature Biotechnology RSS feed with OA/abstract/PDF enrichment, fullscreen builtin widget.
+- `weather-bologna/` - Open-Meteo weather widget with configurable location settings.
+- `reuters-rss/` - Reuters world headlines RSS, declarative WidgetState widget + builtin service.
+
+## Weather location settings
+
+Edit `weather-bologna/settings/weather-settings.json`:
+
+```json
+{
+  "data": {
+    "latitude": 44.4949,
+    "longitude": 11.3426,
+    "label": "Bologna",
+    "timezone": "Europe/Rome"
+  }
+}
+```
 
 ## Install
 
-Each folder is a Desmond plugin directory (manifest `id` must match folder name). Zip a folder and install through Desmond Plugin Manager > Install ZIP.
+Each folder is a Desmond plugin directory (folder name == manifest `id`). Zip a folder and install via Desmond Plugin Manager > Install ZIP.
 
 ```bash
-cd nature.biotech && zip -r ../nature.biotech.zip . && cd ..
+zip -r weather-bologna.zip weather-bologna
 ```
 
 ## Notes
 
-- `src/` contains reference Kotlin service/renderer sources used by builtin implementations. External ZIP plugins cannot ship arbitrary Compose classes; builtin classNames must be registered by the host app.
-- Keep credentials out of plugin files. No secrets included.
+- `src/` contains reference Kotlin service/renderer sources for builtin host integration. External ZIP plugins cannot ship arbitrary Compose classes; builtin classNames must be registered by the host app.
+- No secrets included.

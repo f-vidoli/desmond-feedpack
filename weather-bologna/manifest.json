@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "id": "weather.bologna",
+  "id": "weather-bologna",
   "name": "Weather Bologna",
-  "version": "1.0.0",
-  "description": "Native Compose weather widget for Bologna using Open-Meteo.",
+  "version": "1.1.0",
+  "description": "Native weather widget using Open-Meteo with configurable location.",
   "provides": ["widget", "service"],
   "permissions": [],
   "entry": {
@@ -14,6 +14,10 @@
     "service": {
       "kind": "builtin",
       "className": "com.desmond.feedpack.WeatherService"
+    },
+    "settings": {
+      "kind": "file",
+      "path": "settings/weather-settings.json"
     }
   }
 }

@@ -4,6 +4,7 @@ import com.desmond.core.model.WidgetState
 import com.desmond.plugin.api.ServiceContext
 import com.desmond.plugin.api.ServiceProgram
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -18,14 +19,14 @@ class NatureBiotechService(
 
     override suspend fun run(context: ServiceContext) {
         while (context.isActive()) {
-            context.renderWidget("nature.biotech", WidgetState(title = "Nature Biotech", status = "Fetching RSS…"))
+            context.renderWidget("nature-biotech", WidgetState(title = "Nature Biotech", status = "Fetching RSS…"))
             val payload = withContext(Dispatchers.IO) {
                 runCatching { fetchPayload() }.getOrElse { error ->
                     """{"status":"Error","error":"${error.message?.replace("\"","'") ?: error::class.java.simpleName}","papers":[]}"""
                 }
             }
-            context.renderWidget("nature.biotech", payload)
-            kotlinx.coroutines.delay(REFRESH_MS)
+            context.renderWidget("nature-biotech", payload)
+            delay(REFRESH_MS)
         }
     }
 
@@ -53,7 +54,7 @@ class NatureBiotechService(
         }
         val oa = papers.count { it["openAccess"] == "true" }
         val papersJson = papers.joinToString(",", "[", "]") { p ->
-            """{"title":${json(p["title"]) },"link":${json(p["link"])},"pubDate":${json(p["pubDate"])},"openAccess":${p["openAccess"]},"abstractText":${json(p["abstractText"])},"pdfUrl":${json(p["pdfUrl"])}}"""
+            """{"title":${json(p["title"])},"link":${json(p["link"])},"pubDate":${json(p["pubDate"])},"openAccess":${p["openAccess"]},"abstractText":${json(p["abstractText"])},"pdfUrl":${json(p["pdfUrl"])}}"""
         }
         return """{"status":"Nature Biotechnology · ${papers.size} items · $oa OA","error":"","papers":$papersJson}"""
     }

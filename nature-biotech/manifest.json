@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "id": "nature.biotech",
+  "id": "nature-biotech",
   "name": "Nature Biotech",
   "version": "1.0.0",
   "description": "Nature Biotechnology RSS feed with OA/abstract enrichment.",

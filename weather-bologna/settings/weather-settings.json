@@ -1,0 +1,11 @@
+{
+  "title": "Weather settings",
+  "status": "Location",
+  "body": "Edit weather-bologna/settings/weather-settings.json data to set latitude, longitude, label, timezone.",
+  "data": {
+    "latitude": 44.4949,
+    "longitude": 11.3426,
+    "label": "Bologna",
+    "timezone": "Europe/Rome"
+  }
+}
