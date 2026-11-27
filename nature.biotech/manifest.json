@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "id": "nature.biotech",
+  "name": "Nature Biotech",
+  "version": "1.0.0",
+  "description": "Nature Biotechnology RSS feed with OA/abstract enrichment.",
+  "provides": ["widget", "service"],
+  "permissions": [],
+  "entry": {
+    "service": {
+      "kind": "builtin",
+      "className": "com.desmond.feedpack.NatureBiotechService"
+    },
+    "widget": {
+      "kind": "builtin",
+      "className": "com.desmond.feedpack.NatureBiotechWidgetRenderer",
+      "path": "widget/feed.json"
+    }
+  }
+}

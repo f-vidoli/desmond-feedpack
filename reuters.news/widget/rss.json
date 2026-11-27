@@ -1,0 +1,6 @@
+{
+  "title": "Reuters",
+  "status": "Loading headlines…",
+  "items": [],
+  "actions": [{"id":"refresh","label":"Refresh"}]
+}

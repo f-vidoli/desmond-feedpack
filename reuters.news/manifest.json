@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "id": "reuters.news",
+  "name": "Reuters News",
+  "version": "1.0.0",
+  "description": "Latest Reuters world headlines via RSS.",
+  "provides": ["widget", "service"],
+  "permissions": [],
+  "entry": {
+    "widget": {
+      "kind": "file",
+      "path": "widget/rss.json"
+    },
+    "service": {
+      "kind": "builtin",
+      "className": "com.desmond.feedpack.ReutersRssService"
+    }
+  }
+}
